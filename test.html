@@ -1,0 +1,184 @@
+<html>
+<head><title>DomiNations Admin Tool</title>
+
+<style>
+body 	{background-image:url('./images/page_bg.png'); background-repeat:no-repeat; background-size:cover; padding:10px; font-family:cursive;}
+main 	{display:flex; flex-wrap: wrap; flex-direction:row; justify-content:space-around;}
+section {background-image:url('./images/pannel_small_bg.png'); background-repeat:no-repeat; margin:3px; padding:5px 0px 15px 0px; flex-grow:0; min-width:350px; max-width:950px;}
+/*div 	{border:1px black dotted;} /* For dev purposes */ 
+h1	{margin:0px; color:white;}
+h2	{color:white; text-align:center; margin-left:auto; margin-right:auto;}
+hr	{width:80%; text-align:center;}
+ul	{margin: 3px; display:block;}
+li 	{float:left; margin-right:1px;}
+
+.table		{margin:10px 0px 30px 20px;}
+.short		{min-height:576px; /*background-image:url(''); background-repeat:no-repeat; background-size:contain;*/}
+.closer 	{text-align:center;}
+.long_banner 	{background-image:url('./images/long_banner.png'); background-size:cover; background-repeat:no-repeat; width:350px; margin:0px auto; padding-left:65px;}
+.short_banner	{background-image:url('./images/long_banner.png'); background-size:contain; background-repeat:no-repeat; text-align:center;}
+.snc 		{background-image:url('./images/green_btn.png'); background-size:cover; background-repeat:no-repeat;padding:0px 8px;}
+.nexon		{background-image:url('./images/grey_btn.png'); background-size:cover; background-repeat:no-repeat; padding:0px 8px;}
+
+#wrap		{margin-left:auto; margin-right:auto;}
+#flip		{position:absolute; top:90%; left:90%; background-image:url('./images/flip_btn.png'); background-repeat:no-repeat;}
+#directory	{background-image:url('./images/pannel_top_bg.png'); background-size:cover; background-repeat:no-repeat; min-width:650px; padding:0px 25px 0px 0px;}
+#floor		{background-image:url('./images/pannel_floor.png');margin-left:10px; margin-top:55px; width:100%;}
+#player_data	{order:1; display:block;} 	/*This should always be visible */
+#alliance	{order:2; display:block;} 	/*This should be summoned by a button */
+#purchase	{order:3; display:block;}	/*This should be summoned by a button */
+#purchase span	{display:inline;}
+#notes		{order:4; display:block;}	/*This should be summoned by a button */
+#combat		{order:5; display:block;}
+</style>
+
+<script>
+function find_user()
+	{
+	document.getElementById('user_table').style.display = "block";
+	}
+
+function close_this()
+	{
+	this.onclick = this.style.display = "none";
+	}
+</script>
+
+</head>
+<body>
+	<div style="width:100%;">
+	<div id="wrap">
+	<main>		
+	<section id="directory">
+		<h1 class="long_banner">DomiNations Admin Tool</h1>
+			<ul style="text-align:center;">
+			<li><input class="nexon" type="button" value="System Messages" 	onclick=""></li><!-- MSG   -->
+			<li><input class="nexon" type="button" value="Client Bundles"	onclick=""></li><!-- ???   -->
+			<li><input class="nexon" type="button" value="Notify Users"	onclick=""></li><!-- MSG   -->
+			<li><input class="nexon" type="button" value="Notify All Users"	onclick=""></li><!-- MSG   -->
+			<li><input class="nexon" type="button" value="Export NPCs"	onclick=""></li><!-- ???   -->
+			<li><input class="nexon" type="button" value="Show Sessions"	onclick=""></li><!-- ???   -->
+			<li><input class="nexon" type="button" value="Fix Sessions"	onclick=""></li><!-- ???   -->
+			<li><input class="nexon" type="button" value="Show user attacks"onclick=""></li><!-- ???   -->
+			<li><input class="nexon" type="button" value="Edit Game Data"	onclick=""></li><!-- ???   -->
+			<li><input class="snc" type="button" value="Send Gift"		onclick=""></li><!-- Done? -->
+			<li><input class="snc" type="button" value="Ban User"		onclick=""></li><!-- User  -->
+			<li><input class="snc" type="button" value="Add System Message"	onclick=""></li>
+			<li><input class="snc" type="button" value="Add Client Versions"onclick=""></li>
+			<li><input class="snc" type="button" value="Client Versions"	onclick=""></li>
+			<li><input class="snc" type="button" value="Show User Data"	onclick=""></li>
+			<li><input class="snc" type="button" value="Reverse Look Up"	onclick=""></li>
+			<li><input class="snc" type="button" value="Migrate account" 	onclick=""></li>
+			<li><input class="snc" type="button" value="Clone Account"	onclick=""></li>
+			<li><input class="snc" type="button" value="Show Alliance Data"	onclick=""></li>
+			<li><input class="snc" type="button" value="Edit Experiments"	onclick=""></li>
+			<li><input class="snc" type="button" value="Test Match Making"	onclick=""></li>
+			<li><input class="snc" type="button" value="Adjust Rating"	onclick=""></li>
+			<li><input class="snc" type="button" value="System Mail"	onclick=""></li>
+			<li><input class="snc" type="button" value="New Device Token"	onclick=""></li>
+			</ul>
+			<div id="floor">&nbsp;</div>
+			</section>
+		</main>
+		<main><!-- This is  the flex parent -->
+			
+			<section id="player_data" class="short"><!-- This is 1st Flex Child & Info read out panels -->
+				<h1 class="short_banner">Player Data</h1>
+				<span class="table">
+				Select User: <input type="text" name="player_id" placeholder="Input Player ID"/>
+				<input type="button" value="Get Player Data" onClick="find_user()" /><br />
+				</span>
+				<hr>
+				<div id="user_table" class="table">
+					Player Name: 	<span id="tbl_player_name">	&nbsp;</span><br />
+					Change Name:	<input type="text" placeholder="Enter New Name" name="input_new_name">
+							<input type="button" name="change_name" value="Change"><br />
+					Player ID: 	<span id="tbl_player_id">	&nbsp;</span><br />
+					Created: 	<span id="tbl_player_created">	&nbsp;</span><br />
+					Age: 		<span id="tbl_player_age">	&nbsp;</span><br />
+					Rating: 	<span id="tbl_player_rating">	&nbsp;</span><br />
+					Ban User?	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="text" name="ban_id" placeholder="Enter User ID">
+							<input type="button" name="ban_hammer" value="Ban Player" onclick=""><br />
+					Migrate User?	<input type="text" name="migrate_to" placeholder="Enter new shard">
+							<input type="button" name="submit_migrate" value="Migrate">
+					<hr>
+					Facebook:	<span id="usr_fb_name">&nbsp;</span><br />
+					Facebook Name: 	<span id="usr_fb_id">&nbsp;</span><br />
+					Facebook Email:	<span id="usr_fb_email">&nbsp;</span>
+					
+				</div>
+			</section>
+			
+			<section id="combat" class="short"><!-- This is 1st Flex Child & Info read out panels -->
+				<h1 class="short_banner">Combat Data</h1>
+				<div id="notes_data" class="table">
+					Shield End: 	<span id="tbl_player_shieldend">&nbsp;</span><br />
+					Last Attacked: 	<span id="tbl_player_lastattacked">&nbsp;</span><br />
+					End Shield:	<input name="end-shield" type="button" value="End Shield" /><br />
+					<hr>
+					Wins: 		<span id="tbl_player_wins">	&nbsp;</span><br />
+					Losses: 	<span id="tbl_player_loss">	&nbsp;</span><br />
+					Def Wins: 	<span id="tbl_player_dwin">	&nbsp;</span><br />
+					Def Loss: 	<span id="tbl_player_dloss">	&nbsp;</span><br />
+					Show Data:	<input name="game-data" type="button" value="Show Game Data" /><br />
+				</div>
+			</section>
+			
+			<section id="alliance" class="short"><!-- This is 1st Flex Child & Info read out panels -->
+				<h1 class="short_banner">Alliance Data</h1>
+				<div class="table">
+					<u>Aliance Name</u>: <div id="alliance_name">&nbsp;</div>
+					Join Date: <div id="alliance_joined">&nbsp;</div>
+					<hr>
+					<u>Other Members</u>: <div id="other_players">
+					Member 1: <div id="alliance_mem_1">&nbsp;</div>
+					Member 2: <div id="alliance_mem_2">&nbsp;</div>
+					Member 3: <div id="alliance_mem_3">&nbsp;</div>
+					</div><br />
+				</div>
+			</section>
+			
+			<section id="purchase" class="short"><!-- This is 1st Flex Child & Info read out panels -->
+				<h1 class="short_banner">Purchase Data</h1>
+				<div id="purchse_data" class="table">
+					<u>Purchase History</u>: <span id="purchase_history">&nbsp;</span><br />
+					Current <img src="./images/crowns.png" alt="Crowns" title="Crowns" />: 	<span id="purchased_crowns">0</span><br />
+					Current <img src="./images/coins.png"  alt="Coins" title="Coins"/>:	<span id="purchased_gold">0</span><br />
+					Current <img src="./images/food.png"  alt="Food" title="Food"/>:	<span id="purchased_food">0</span>
+					<br />
+				<h1 class="short_banner">Award Treasure!</h1>
+					Give <img src="./images/crowns.png" alt="Crowns" title="Crowns" />: 	<input type="text" name="given_crowns" />
+														<input type="button" name"give_crowns" value="Give"><br />
+					Give <img src="./images/coins.png"  alt="Coins" title="Coins"/>:  	<input type="text" name="given_gold"/>
+														<input type="button" name"give_gold" value="Give"><br />
+					Give <img src="./images/food.png"  alt="Food" title="Food"/>:		<input type="text" name="given_food"/>
+														<input type="button" name"give_food" value="Give">
+				<h1 class="short_banner">Punish the Wicked!</h1>
+					Take <img src="./images/crowns.png" alt="Crowns" title="Crowns" />: 	<input type="text" name="taken_crowns" />
+														<input type="button" name"take_crowns" value="Take"><br />
+					Take <img src="./images/coins.png"  alt="Coins" title="Coins"/>:  	<input type="text" name="taken_gold"/>
+														<input type="button" name"take_gold" value="Take"><br />
+					Take <img src="./images/food.png"  alt="Food" title="Food"/>:		<input type="text" name="taken_food"/>
+														<input type="button" name"take_food" value="Take">
+				
+				</div>
+			</section>
+			
+			<section id="notes" class="short"><!-- This is 1st Flex Child & Info read out panels -->
+				<h1 class="short_banner">Notes</h1>
+				<div id="notes_data" class="table">
+					<u>Player Notes</u>: <br />
+					<div id="purchase_history">Player Note</div>
+					<hr>
+					<div id="purchase_history">Player Note</div>
+					<hr>
+					<div id="purchase_history">Player Note</div>
+					<hr>
+				</div>
+			</section>
+		</main>
+	</div><!-- Wrap --> 
+	</div><!-- outter wrap -->
+</body>
+</html>
